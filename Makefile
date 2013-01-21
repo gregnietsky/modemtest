@@ -4,15 +4,17 @@ BINDIR=$(PREFIX)/bin
 CC=gcc
 INSTALL=ginstall
 
-all:	modemtest
+PROGNAME=modemtest
+LIBS=
+
+all:	$(PROGNAME)
 distclean:	clean
 
 clean:
-	rm modemtest
-
+	rm $(PROGNAME)
 
 install: all
-	$(INSTALL) -D modemtest $(DESTDIR)$(BINDIR)/modemtest
+	$(INSTALL) -D $(PROGNAME) $(DESTDIR)$(BINDIR)/$(PROGNAME)
 
-macmask:
-	$(CC) modemtest.c -o modemtest
+$(PROGNAME):
+	$(CC) $(PROGNAME).c -o $(PROGNAME) $(LIBS)
